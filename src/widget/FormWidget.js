@@ -17,22 +17,18 @@ class FormWidget {
             throw new Error('Label is required');
         }
 
-        let attributeValue;
         for (let index in attributes) {
-            attributeValue = String(attributes[index] || '');
-            if (attributeValue.length) {
-                this.attributes[this.escapeHtml(index).trim()] = this.escapeHtml(attributeValue);
-            }
+            this.setAttribute(index, attributes[index]);
         }
     }
 
     setAttribute(name, value) {
-        this.attributes[this.escapeHtml(name).trim()] = this.escapeHtml(value);
+        this.attributes[escapeHtml(name).trim()] = escapeHtml(value);
         return this;
     }
 
     getAttribute(name) {
-        return this.attributes[this.escapeHtml(name).trim()];
+        return this.attributes[escapeHtml(name).trim()];
     }
 
     hasAttribute(name) {
@@ -40,7 +36,7 @@ class FormWidget {
     }
 
     removeAttribute(name) {
-        this.attributes[this.escapeHtml(name).trim()] = '';
+        this.attributes[escapeHtml(name).trim()] = '';
         return this;
     }
 

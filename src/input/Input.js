@@ -21,7 +21,6 @@ class Input {
         this.attributes.name = name;
         this.attributes.value = value;
 
-        let attributeValue;
         for (let index in attributes) {
             this.setAttribute(index, attributes[index]);
         }
