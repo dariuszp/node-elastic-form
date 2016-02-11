@@ -1,39 +1,38 @@
 'use strict';
 
-let escapeHtml = require('./../util/escapeHtml');
+let Input = require('./../input/Input.js'),
+    escapeHtml = require('./../util/escapeHtml.js');
 
-class Input {
+class FormWidget {
 
-    constructor(name, type, value, attributes) {
-        name = String(name || '').trim();
-        type = String(type || 'text').trim();
-        value = String(value || '').trim();
+    constructor(label, input, attributes) {
+        label = String(label || '').trim();
+        if ((input instanceof Input) === false) {
+            throw new Error('Invalid input');
+        }
         if ((attributes instanceof Object) === false) {
             attributes = {};
         }
-
-        if (name.length === 0 || type.length === 0) {
-            throw new Error('Input name and type are required');
+        if (label.length === 0) {
+            throw new Error('Label is required');
         }
-
-        this.attributes = {};
-        this.attributes.type = type;
-        this.attributes.name = name;
-        this.attributes.value = value;
 
         let attributeValue;
         for (let index in attributes) {
-            this.setAttribute(index, attributes[index]);
+            attributeValue = String(attributes[index] || '');
+            if (attributeValue.length) {
+                this.attributes[this.escapeHtml(index).trim()] = this.escapeHtml(attributeValue);
+            }
         }
     }
 
     setAttribute(name, value) {
-        this.attributes[escapeHtml(name).trim()] = escapeHtml(value);
+        this.attributes[this.escapeHtml(name).trim()] = this.escapeHtml(value);
         return this;
     }
 
     getAttribute(name) {
-        return this.attributes[escapeHtml(name).trim()];
+        return this.attributes[this.escapeHtml(name).trim()];
     }
 
     hasAttribute(name) {
@@ -41,30 +40,8 @@ class Input {
     }
 
     removeAttribute(name) {
-        this.attributes[escapeHtml(name).trim()] = '';
+        this.attributes[this.escapeHtml(name).trim()] = '';
         return this;
-    }
-
-    setValue(value) {
-        return this.setAttribute('value', value);
-    }
-
-    getValue() {
-        return this.getAttribute('value');
-    }
-
-    disable(flag) {
-        if (flag === undefined) {
-            flag = true;
-        }
-        return this.setAttribute('disabled', flag ? 'disabled' : '');
-    }
-
-    readonly(flag) {
-        if (flag === undefined) {
-            flag = true;
-        }
-        return this.setAttribute('readonly', flag ? 'readonly' : '');
     }
 
     addClass(name) {
@@ -103,5 +80,3 @@ class Input {
         return this.render();
     }
 }
-
-module.exports = Input;
