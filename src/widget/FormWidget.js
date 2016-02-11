@@ -17,6 +17,9 @@ class FormWidget {
             throw new Error('Label is required');
         }
 
+        this.label = escapeHtml(label);
+        this.input = input;
+
         for (let index in attributes) {
             this.setAttribute(index, attributes[index]);
         }
@@ -69,7 +72,7 @@ class FormWidget {
             attributes.push(`${index}="${this.attributes[index]}"`);
         }
 
-        return `<input ${attributes.join(' ')}>`;
+        return `<div ${attributes.join(' ')}><label>${this.label}</label> ${this.input}</div>`;
     }
 
     toString() {
