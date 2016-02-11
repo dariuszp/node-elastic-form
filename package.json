@@ -1,0 +1,28 @@
+{
+  "name": "node-elastic-form",
+  "version": "0.1.0",
+  "description": "Form handler for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dariuszp/node-elastic-form.git"
+  },
+  "keywords": [
+    "express",
+    "form",
+    "handler"
+  ],
+  "author": "Półtorak Dariusz <poltorak.dariusz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dariuszp/node-elastic-form/issues"
+  },
+  "homepage": "https://github.com/dariuszp/node-elastic-form#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "esnext": true,
+  "node": true,
+  "mocha": true,
+  "predef": [
+    "__dirname",
+    "module"
+  ]
+}
