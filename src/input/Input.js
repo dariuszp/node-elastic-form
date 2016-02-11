@@ -42,6 +42,37 @@ class Input {
         return this;
     }
 
+    setValue(value) {
+        return this.setAttribute('value', value);
+    }
+
+    getValue() {
+        return this.getAttribute('value');
+    }
+
+    addClass(name) {
+        let classAttr = String(this.getAttribute('class') || '').split(' ');
+        if (!this.hasClass(name)) {
+            classAttr.push(name);
+            this.setAttribute('class', classAttr.join(' '));
+        }
+        return this;
+    }
+
+    removeClass(name) {
+        let classAttr = String(this.getAttribute('class') || '').split(' ');
+        if (this.hasClass(name)) {
+            classAttr.splice(classAttr.indexOf(name), 1);
+            this.setAttribute('class', classAttr.join(' '));
+        }
+        return this;
+    }
+
+    hasClass(name) {
+        let classAttr = String(this.getAttribute('class') || '').split(' ');
+        return classAttr.indexOf(String(name || '')) > -1;
+    }
+
     escapeHtml(value) {
         value = String((value === null || value === undefined) ? '' : value);
         return value

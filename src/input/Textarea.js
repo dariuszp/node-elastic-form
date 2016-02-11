@@ -4,6 +4,10 @@ let Input = require('./Input.js');
 
 class Textarea extends Input {
 
+    constructor(name, value, attributes) {
+        super(name, 'textarea', value, attributes);
+    }
+
     render() {
         let attributes = [],
             value = '';

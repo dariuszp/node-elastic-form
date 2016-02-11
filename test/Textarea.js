@@ -6,7 +6,7 @@ let should = require('should'),
 describe('Textarea', function () {
     describe('.toString()', function () {
         it('should print simple input', function () {
-            let contactEmailInput = new Textarea('contact', 'email', 'poltorak.dariusz@gmail.com', {
+            let contactEmailInput = new Textarea('contact', 'poltorak.dariusz@gmail.com', {
                 class: 'form-control'
             });
 
