@@ -7,7 +7,7 @@ class Input {
     constructor(name, type, value, attributes) {
         name = String(name || '').trim();
         type = String(type || 'text').trim();
-        value = String(value || '').trim();
+        value = String(value || '');
         if ((attributes instanceof Object) === false) {
             attributes = {};
         }
@@ -19,7 +19,10 @@ class Input {
         this.attributes = {};
         this.attributes.type = type;
         this.attributes.name = name;
-        this.attributes.value = value;
+
+        if (value.length) {
+            this.attributes.value = value;
+        }
 
         for (let index in attributes) {
             this.setAttribute(index, attributes[index]);
