@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
             response.push(`<h2>${files[i].split('/').pop()}</h2>`);
             var Input = require(files[i]);
             var inputObj = new Widget('Label ' + i, new Input('Input' + i));
-            response.push(`<div style="padding: 50px; margin: 10px; border: 2px solid #ccc;">${inputObj.toString()}</div>`);
+            response.push(`<div style="padding: 50px; margin: 10px; border: 2px solid #ccc;">${inputObj.toString()}</div>\n`);
         }
         res.end(response.join('<br>'));
     });
