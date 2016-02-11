@@ -2,7 +2,7 @@
 
 class Input {
 
-    constructor(name, type, value, attributes) {
+    constructor(name, type, value, attributes = {}) {
         name = String(name || '').trim();
         type = String(type || 'text').trim();
         value = String(value || '').trim();
@@ -28,7 +28,7 @@ class Input {
         }
     }
 
-    setAttribute(name, value) {
+    setAttribute(name, value = '') {
         this.attributes[this.escapeHtml(name).trim()] = this.escapeHtml(value);
         return this;
     }
@@ -48,6 +48,20 @@ class Input {
 
     getValue() {
         return this.getAttribute('value');
+    }
+
+    disable(flag) {
+        if (flag === undefined) {
+            flag = true;
+        }
+        return this.setAttribute('disabled', flag ? 'disabled' : '');
+    }
+
+    readonly(flag) {
+        if (flag === undefined) {
+            flag = true;
+        }
+        return this.setAttribute('readonly', flag ? 'readonly' : '');
     }
 
     addClass(name) {
@@ -73,16 +87,6 @@ class Input {
         return classAttr.indexOf(String(name || '')) > -1;
     }
 
-    escapeHtml(value) {
-        value = String((value === null || value === undefined) ? '' : value);
-        return value
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/\'/g, '&#39;')
-            .replace(/[&<>\"\']/, '&quot;');
-    }
-
     render() {
         let attributes = [];
         for (let index in this.attributes) {
@@ -94,6 +98,16 @@ class Input {
 
     toString() {
         return this.render();
+    }
+
+    escapeHtml(value) {
+        value = String((value === null || value === undefined) ? '' : value);
+        return value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\'/g, '&#39;')
+            .replace(/[&<>\"\']/, '&quot;');
     }
 }
 
