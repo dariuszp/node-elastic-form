@@ -23,9 +23,33 @@ class Input {
         for (let index in attributes) {
             attributeValue = String(attributes[index] || '');
             if (attributeValue.length) {
-                this.attributes[index] = attributeValue;
+                this.attributes[this.escapeHtml(index).trim()] = this.escapeHtml(attributeValue);
             }
         }
+    }
+
+    setAttribute(name, value) {
+        this.attributes[this.escapeHtml(name).trim()] = this.escapeHtml(value);
+        return this;
+    }
+
+    getAttribute(name) {
+        return this.attributes[this.escapeHtml(name).trim()];
+    }
+
+    removeAttribute(name) {
+        this.attributes[this.escapeHtml(name).trim()] = '';
+        return this;
+    }
+
+    escapeHtml(value) {
+        value = String((value === null || value === undefined) ? '' : value);
+        return value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\'/g, '&#39;')
+            .replace(/[&<>\"\']/, '&quot;');
     }
 
     render() {
