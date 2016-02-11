@@ -76,3 +76,5 @@ class FormWidget {
         return this.render();
     }
 }
+
+module.exports = FormWidget;
