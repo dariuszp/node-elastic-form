@@ -2,7 +2,7 @@
 
 class Input {
 
-    constructor(name, type, value, attributes = {}) {
+    constructor(name, type, value, attributes) {
         name = String(name || '').trim();
         type = String(type || 'text').trim();
         value = String(value || '').trim();
@@ -28,7 +28,7 @@ class Input {
         }
     }
 
-    setAttribute(name, value = '') {
+    setAttribute(name, value) {
         this.attributes[this.escapeHtml(name).trim()] = this.escapeHtml(value);
         return this;
     }
