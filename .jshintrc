@@ -3,6 +3,7 @@
   "node": true,
   "mocha": true,
   "predef": [
-    "__dirname"
+    "__dirname",
+    "module"
   ]
 }
