@@ -2,7 +2,7 @@
 
 let Input = require('./Input.js');
 
-class Textarea extends Input {
+class InputTextarea extends Input {
 
     constructor(name, value, attributes) {
         super(name, 'textarea', value, attributes);
@@ -29,4 +29,4 @@ class Textarea extends Input {
 
 }
 
-module.exports = Textarea;
+module.exports = InputTextarea;

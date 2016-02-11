@@ -1,16 +1,16 @@
 'use strict';
 
 let should = require('should'),
-    Textarea = require(__dirname + '/../src/input/Textarea.js');
+    InputTextarea = require(__dirname + '/../src/input/InputTextarea.js');
 
-describe('Textarea', function () {
+describe('InputTextarea', function () {
     describe('.toString()', function () {
         it('should print simple input', function () {
-            let contactEmailInput = new Textarea('contact', 'poltorak.dariusz@gmail.com', {
+            let input = new InputTextarea('contact', 'poltorak.dariusz@gmail.com', {
                 class: 'form-control'
             });
 
-            contactEmailInput.toString().should.equal('<textarea name="contact" class="form-control">poltorak.dariusz@gmail.com</textarea>');
+            input.toString().should.equal('<textarea name="contact" class="form-control">poltorak.dariusz@gmail.com</textarea>');
         });
     });
 });

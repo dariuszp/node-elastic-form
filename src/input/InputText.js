@@ -2,7 +2,7 @@
 
 let Input = require('./Input.js');
 
-class Text extends Input {
+class InputText extends Input {
 
     constructor(name, value, attributes) {
         super(name, 'text', value, attributes);
@@ -10,4 +10,4 @@ class Text extends Input {
 
 }
 
-module.exports = Text;
+module.exports = InputText;
