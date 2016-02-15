@@ -25,6 +25,18 @@ class FormWidget {
         }
     }
 
+    getInput() {
+        return this.input;
+    }
+
+    setLabel(label) {
+        this.label = escapeHtml(label);
+    }
+
+    getLabel() {
+        return this.label;
+    }
+
     setAttribute(name, value) {
         this.attributes[escapeHtml(name).trim()] = escapeHtml(value);
         return this;
