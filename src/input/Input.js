@@ -69,6 +69,10 @@ class Input {
         return this.setAttribute('readonly', flag ? 'readonly' : '');
     }
 
+    setClass(name) {
+        return this.setAttribute('class', name);
+    }
+
     addClass(name) {
         let classAttr = String(this.getAttribute('class') || '').split(' ');
         if (!this.hasClass(name)) {
@@ -85,6 +89,18 @@ class Input {
             this.setAttribute('class', classAttr.join(' '));
         }
         return this;
+    }
+
+    removeAllClasses(name) {
+        return this.setAttribute('class', '');
+    }
+
+    setId(name) {
+        return this.setAttribute('id', name);
+    }
+
+    getId() {
+        return this.getAttribute('id');
     }
 
     hasClass(name) {
