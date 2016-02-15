@@ -43,6 +43,10 @@ class FormWidget {
         return this;
     }
 
+    setClass(name) {
+        return this.setAttribute('class', name);
+    }
+
     addClass(name) {
         let classAttr = String(this.getAttribute('class') || '').split(' ');
         if (!this.hasClass(name)) {
@@ -61,9 +65,25 @@ class FormWidget {
         return this;
     }
 
+    removeAllClasses(name) {
+        return this.setAttribute('class', '');
+    }
+
     hasClass(name) {
         let classAttr = String(this.getAttribute('class') || '').split(' ');
         return classAttr.indexOf(String(name || '')) > -1;
+    }
+
+    setId(name) {
+        return this.setAttribute('id', name);
+    }
+
+    getId() {
+        return this.getAttribute('id');
+    }
+
+    removeId() {
+        return this.setAttribute('id', '');
     }
 
     render() {

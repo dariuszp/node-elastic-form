@@ -95,6 +95,11 @@ class Input {
         return this.setAttribute('class', '');
     }
 
+    hasClass(name) {
+        let classAttr = String(this.getAttribute('class') || '').split(' ');
+        return classAttr.indexOf(String(name || '')) > -1;
+    }
+
     setId(name) {
         return this.setAttribute('id', name);
     }
@@ -105,11 +110,6 @@ class Input {
 
     removeId() {
         return this.setAttribute('id', '');
-    }
-
-    hasClass(name) {
-        let classAttr = String(this.getAttribute('class') || '').split(' ');
-        return classAttr.indexOf(String(name || '')) > -1;
     }
 
     render() {
