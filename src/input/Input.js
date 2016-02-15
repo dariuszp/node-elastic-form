@@ -103,6 +103,10 @@ class Input {
         return this.getAttribute('id');
     }
 
+    removeId() {
+        return this.setAttribute('id', '');
+    }
+
     hasClass(name) {
         let classAttr = String(this.getAttribute('class') || '').split(' ');
         return classAttr.indexOf(String(name || '')) > -1;
